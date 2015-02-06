@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <title>Editar Codigo QR</title>
+    </h:head>
+    <h:body>
+        <center>
+        <h:form>
+            <p:panelGrid columns="3">
+
+                <f:facet name="header">
+                    <h:outputText value="Editar CodigoQR"/>
+                </f:facet>
+                <h:outputText value="Nombre :"/>
+                <h:inputText id="nombreCodigo" value="#{adminEditarCodigoBean.nombreCodigo}" required="true"/>
+                <p:message for="nombreCodigo" display="icon"/>
+
+                <h:outputText value="Descripción :"/>
+                <h:inputTextarea id="descripcion" value="#{adminEditarCodigoBean.descripcion}" required="true"/>
+                <p:message for="descripcion" display="icon"/>
+
+                <h:outputText value="Tipo :"/>
+                <p:selectOneMenu id="tipoCodigo" value="#{adminEditarCodigoBean.tipoCodigo}" required="true" requiredMessage="campo requerido">
+                    <f:selectItem itemLabel="Seleccionar"/>
+                    <f:selectItems value="#{adminCrearCodigoBean.listaTiposCodigo}"/>
+                </p:selectOneMenu>
+                <p:message for="tipoCodigo" display="icon"/>
+
+                <h:outputText value="Estado :"/>
+                <p:selectOneMenu id="estado" value="#{adminEditarCodigoBean.estadoCodigo}" required="true" requiredMessage="campo requerido">
+                    <f:selectItem itemLabel="Seleccionar"/>
+                    <f:selectItems value="#{adminEditarCodigoBean.listaEstadosCodigos}"/>
+                </p:selectOneMenu>
+                <p:message for="estado" display="icon"/>
+
+                <f:facet name="footer">
+                    <center>
+                        <p:commandButton action="consultarCodigos" value="Cancelar"  ajax="false"></p:commandButton>
+                        <p:commandButton action="#{adminEditarCodigoBean.editarCodigoQR()}" value="Guardar"></p:commandButton>
+                    </center>
+                </f:facet>
+            </p:panelGrid>
+        </h:form>
+        </center>
+    </h:body>
+</html>
+

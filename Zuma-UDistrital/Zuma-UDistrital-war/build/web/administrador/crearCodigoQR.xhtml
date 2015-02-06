@@ -1,0 +1,52 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <center>
+            <h1>Crear Códgio QR.</h1>
+            <h:form enctype="multipart/form-data">
+                <p:growl id="messages" showDetail="true" />
+                <p:panelGrid columns="2">
+
+                    <h:outputText value="Nombre :"></h:outputText>
+                    <p:inputText value="#{adminCrearCodigoBean.nombre}" required="true" requiredMessage="Error: Campo requerido"/>
+
+                    <h:outputText value="Descripción :"></h:outputText>
+                    <p:inputTextarea value="#{adminCrearCodigoBean.descripcion}" required="false"/>
+
+                    <h:outputText value="Tipo:"></h:outputText>
+                    <p:selectOneMenu id="tipo" value="#{adminCrearCodigoBean.tipoCodigo}" required="true" requiredMessage="campo requerido">
+                        <f:selectItem itemLabel="Seleccionar" />
+                        <f:selectItems value="#{adminCrearCodigoBean.listaTiposCodigo}"/>
+                    </p:selectOneMenu>
+
+                    <h:outputText value="Estado :"></h:outputText>
+                    <p:selectOneMenu id="estado" value="#{adminCrearCodigoBean.estado}" required="true" requiredMessage="campo requerido">
+                        <f:selectItem itemLabel="Seleccionar" />
+                        <f:selectItems value="#{adminCrearCodigoBean.listaEstados}"/>
+                    </p:selectOneMenu>
+
+                    <h:outputText value="Código :"></h:outputText>
+                    <p:fileUpload value="#{adminCrearCodigoBean.file}" 
+                                  mode="simple" 
+                                  allowTypes="/(\.|\/)(gif|jpe?g|png)$/"
+                                  required="true" />
+                </p:panelGrid>
+
+                <h:panelGroup>
+                    <p:commandButton value="Crear Código" ajax="false" action="#{adminCrearCodigoBean.upload}"/>
+                </h:panelGroup>
+            </h:form>
+            <h:form>
+                <p:commandButton value="Cancelar" ajax="false" action="consultarCodigos"/>
+            </h:form>
+        </center>
+    </h:body>
+</html>
+

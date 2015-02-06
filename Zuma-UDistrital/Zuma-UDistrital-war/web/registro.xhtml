@@ -1,0 +1,57 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <f:loadBundle basename="edu/udistrital/zuma/recursos/registro" var="registro"/>
+        <title><h:outputText value="#{registro.tituloPagina}"></h:outputText></title>
+    </h:head>
+    <h:body>
+        <!-- Registrese como invitado -->
+        <center>
+            <h1><h:outputText value="#{registro['pRegistro.registrese']}"></h:outputText></h1>
+        </center>
+        <!-- Formulario de Registro -->
+        <center>
+            <h:form>
+                <p:growl id="growl" showDetail="true" sticky="true" />
+                <h:panelGrid id="panel" columns="3">
+                    <h:outputText value="#{registro['pRegistro.etiquetaNombre']}"></h:outputText>
+                    <p:inputText id="nombre" value="#{registroBean.nombre}" required="true"></p:inputText>
+                    <p:message for="nombre" display="icon"></p:message>
+
+                    <h:outputText value="#{registro['pRegistro.etiquetaApellido']}"></h:outputText>
+                    <p:inputText id="apellido" value="#{registroBean.apellido}" required="true"></p:inputText>
+                    <p:message for="apellido" display="icon"></p:message>
+
+                    <h:outputText value="#{registro['pRegistro.etiquetaCorreo']}"></h:outputText>
+                    <p:inputText id="correo" value="#{registroBean.correo}" required="true"></p:inputText>
+                    <p:message for="correo" display="icon"></p:message>
+
+                </h:panelGrid>
+                <!-- Boton -->
+                <br/>
+                <h:panelGroup style="display:block; text-align:center">
+                    <p:commandButton id="botonIngresar" value="#{registro['pRegistro.etiquetaBoton']}" action="#{registroBean.registrarse()}" update="panel"/>
+                </h:panelGroup>
+            </h:form>
+
+            <h:form>
+                <p:growl id="growl" life="2000" />
+                <center>
+                    <br/><br/>
+                    <strong><h:outputLabel value="#{registro['pRegistro.etiquetaTieneCuenta']}" /></strong>
+                    <p:commandLink id="ajax" update="growl" action="#{registroBean.irALogin()}">
+                        <h:outputText value="Ingrese." />
+                    </p:commandLink>
+                </center>
+            </h:form>
+
+
+        </center>
+        
+    </h:body>
+</html>
+

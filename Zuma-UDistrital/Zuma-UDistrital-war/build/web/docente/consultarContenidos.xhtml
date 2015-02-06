@@ -1,0 +1,78 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <center>
+            <h1>Universidad Distrital Francisco José de Caldas</h1>
+            <h3>Contenidos del sistema</h3>
+            <h:form>
+                <p:dataTable var="contenido" value="#{docenteConsultarContenidosBean.listaContenidos}" widgetVar="tablaContenidos"  style="width:100%"
+                             emptyMessage="No hay usuarios con ese criterio" filteredValue="#{docenteConsultarContenidosBean.listaContenidosFiltrados}"
+                             rows="10"
+                             paginator="true"
+                             paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                             rowsPerPageTemplate="5,10,15">
+
+                    <f:facet name="header">
+                        <p:outputPanel>
+                            <h:outputText value="Buscar en todos los campos:"/>
+                            <p:inputText id="globalFilter" onkeyup="PF('tablaContenidos').filter()" placeholder="Palabra clave"/>
+                        </p:outputPanel>
+                    </f:facet>
+
+                    <p:column filterBy="#{contenido.contenidoId}" headerText="Id">
+                        <h:outputText value="#{contenido.contenidoId}" />
+                    </p:column>
+
+                    <p:column filterBy="#{contenido.contenidoTitulo}" headerText="Titulo">
+                        <h:outputText value="#{contenido.contenidoTitulo}" />
+                    </p:column>
+
+                    <p:column filterBy="#{contenido.contenidoTema}" headerText="Tema">
+                        <h:outputText value="#{contenido.contenidoTema}" />
+                    </p:column>
+
+                    <p:column filterBy="#{contenido.contenidoResumen}" headerText="Resumen">
+                        <h:outputText value="#{contenido.contenidoResumen}" />
+                    </p:column>
+
+                    <p:column filterBy="#{contenido.contenidoExplicacion}" headerText="Explicación">
+                        <h:outputText value="#{contenido.contenidoExplicacion}" />
+                    </p:column>
+
+                    <p:column filterBy="#{contenido.grupoId.grupoNombre}" headerText="Grupo">
+                        <f:facet name="filter">
+                            <p:selectOneMenu onchange="PF('tablaContenidos').filter()" >
+                                <f:selectItem itemLabel="Seleccione" itemValue="#{null}" noSelectionOption="true" />
+                                <f:selectItems value="#{docenteConsultarContenidosBean.grupoDeDocente}" />
+                            </p:selectOneMenu>
+                        </f:facet>
+                        <h:outputText value="#{contenido.grupoId.grupoNombre}" />
+                    </p:column>
+
+                    <p:column headerText="Opciones">
+                        <p:commandLink value="Ver" action="editarCodigoQR?faces-redirect=true">
+                            <!-- Mostrar reporte del contenido seleccionado. -->
+                        </p:commandLink>
+                        &nbsp;
+                        <p:commandLink value="Editar" action="editarCodigoQR?faces-redirect=true">
+                            <!-- Cargar formulario para edicion del contenido. -->
+                        </p:commandLink>
+                        &nbsp;
+                        <p:commandLink value="Eliminar" action="eliminarCodigoQR">
+                            <!-- cArgar formulario para mostrar lo que va eliminar y confirmar -->
+                        </p:commandLink>
+                    </p:column>
+
+                </p:dataTable>
+            </h:form>
+        </center>
+    </h:body>
+</html>
+

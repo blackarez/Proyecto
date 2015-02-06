@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <center>
+            <h1>Edicion de Rol</h1>
+            <h2>Administrador</h2>
+            <h:form>
+                <p:panelGrid columns="3">
+                    <f:facet name="header">
+                        <h:outputText value="Editar Rol"/>
+                    </f:facet>
+                    
+                    <h:outputText value="Id :"/>
+                    <h:outputText id="id" value="#{adminEditarRolBean.id}"/>
+                    <p:message for="id" display="icon"/>
+                    
+                    <h:outputText value="Rol:"></h:outputText>
+                    <h:outputText id="rol" value="#{adminEditarRolBean.nombreRol}"/>
+                    <p:message for="rol" display="icon"/>
+                    
+                    <h:outputText value="Descripción :"/>
+                    <h:inputText id="descripcion" value="#{adminEditarRolBean.descripcion}"/>
+                    <p:message for="descripcion" display="icon"/>
+                    
+                    <f:facet name="footer">
+                        <center>
+                            <p:commandButton action="consultarRol" value="Cancelar" immediate="true"></p:commandButton>
+                            <p:commandButton action="#{adminEditarRolBean.guardarRol()}" value="Guardar"  ajax="false"></p:commandButton>
+                        </center>
+                    </f:facet>
+                </p:panelGrid>
+            </h:form>
+        </center>
+    </h:body>
+</html>
+

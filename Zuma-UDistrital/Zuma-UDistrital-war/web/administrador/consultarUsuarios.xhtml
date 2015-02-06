@@ -1,0 +1,98 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <center>
+            <h1>Universidad Distrital Francisco José de Caldas</h1>
+            <h3>Usuarios del Sistema</h3>
+        </center>
+        <h:form>
+            
+
+            <p:dataTable var="usuario" value="#{adminUsuariosBean.usuarios}" widgetVar="tablaUsuarios"  style="width:100%"
+                         emptyMessage="No hay usuarios con ese criterio" filteredValue="#{adminUsuariosBean.usuariosFiltrados}"
+                         rows="10"
+                         paginator="true"
+                         paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                         rowsPerPageTemplate="5,10,15">
+                <f:facet name="header">
+                    <p:outputPanel>
+                        <h:outputText value="Buscar en todos los campos:"/>
+                        <p:inputText id="globalFilter" onkeyup="PF('tablaUsuarios').filter()" placeholder="Palabra clave"/>
+                    </p:outputPanel>
+                </f:facet>
+
+                <p:column filterBy="#{usuario.usuarioId}" headerText="Id">
+                    <h:outputText value="#{usuario.usuarioId}" />
+                </p:column>
+
+                <p:column filterBy="#{usuario.usuarioNombre}" headerText="Nombre">
+                    <h:outputText value="#{usuario.usuarioNombre}" />
+                </p:column>
+
+                <p:column filterBy="#{usuario.usuarioApellido}" headerText="Apellido">
+                    <h:outputText value="#{usuario.usuarioApellido}" />
+                </p:column>
+
+                <p:column filterBy="#{usuario.usuarioCorreo}" headerText="Correo" style="width: 20%">
+                    <h:outputText value="#{usuario.usuarioCorreo}" />
+                </p:column>
+
+                <p:column filterBy="#{usuario.estadoUsuario.estadoUsuarioEstado}" headerText="Estado">
+                    <f:facet name="filter">
+                        <p:selectOneMenu onchange="PF('tablaUsuarios').filter()" >
+                            <f:selectItem itemLabel="Seleccione" itemValue="#{null}" noSelectionOption="true" />
+                            <f:selectItems value="#{adminUsuariosBean.estadosUsuario}" />
+                        </p:selectOneMenu>
+                    </f:facet>
+                    <h:outputText value="#{usuario.estadoUsuario.estadoUsuarioEstado}" />
+                </p:column>
+
+                <p:column filterBy="#{usuario.rolId.rolNombre}" headerText="Rol">
+                    <f:facet name="filter">
+                        <p:selectOneMenu onchange="PF('tablaUsuarios').filter()" >
+                            <f:selectItem itemLabel="Seleccione" itemValue="#{null}" noSelectionOption="true" />
+                            <f:selectItems value="#{adminUsuariosBean.rolesUsuario}" />
+                        </p:selectOneMenu>
+                    </f:facet>
+                    <h:outputText value="#{usuario.rolId.rolNombre}" />
+                </p:column>
+
+                <p:column headerText="Opciones">
+                    <p:commandLink value="Editar" action="#{adminEditarUsuarioBean.redireccionEditarUsuario()}">
+                        <f:setPropertyActionListener target="#{adminEditarUsuarioBean.idUsuario}" value="#{usuario.usuarioId}"/>
+                        <f:setPropertyActionListener target="#{adminEditarUsuarioBean.nombre}" value="#{usuario.usuarioNombre}"/>
+                        <f:setPropertyActionListener target="#{adminEditarUsuarioBean.apellido}" value="#{usuario.usuarioApellido}"/>
+                        <f:setPropertyActionListener target="#{adminEditarUsuarioBean.correo}" value="#{usuario.usuarioCorreo}"/>
+                        <f:setPropertyActionListener target="#{adminEditarUsuarioBean.estado}" value="#{usuario.estadoUsuario.estadoUsuarioEstado}"/>
+                        <f:setPropertyActionListener target="#{adminEditarUsuarioBean.rol}" value="#{usuario.rolId.rolNombre}"/>
+                    </p:commandLink>
+                    &nbsp;
+                    
+                    <p:commandLink value="Eliminar" action="#{adminElimianrUsuarioBean.redireccionEliminarUsuario()}">  
+                        <f:setPropertyActionListener target="#{adminElimianrUsuarioBean.idUsuario}" value="#{usuario.usuarioId}"/>
+                        <f:setPropertyActionListener target="#{adminElimianrUsuarioBean.nombre}" value="#{usuario.usuarioNombre}"/>
+                        <f:setPropertyActionListener target="#{adminElimianrUsuarioBean.apellido}" value="#{usuario.usuarioApellido}"/>
+                        <f:setPropertyActionListener target="#{adminElimianrUsuarioBean.correo}" value="#{usuario.usuarioCorreo}"/>
+                        <f:setPropertyActionListener target="#{adminElimianrUsuarioBean.estado}" value="#{usuario.estadoUsuario.estadoUsuarioEstado}"/>
+                        <f:setPropertyActionListener target="#{adminElimianrUsuarioBean.rol}" value="#{usuario.rolId.rolNombre}"/>
+                    </p:commandLink>
+
+                </p:column>
+
+            </p:dataTable>
+            <center>
+                <p:commandButton action="inicio" value="Volver"/>
+                <p:commandButton action="crearUsuario" value="Crear Usuario"/>
+            </center>
+
+        </h:form>
+    </h:body>
+</html>
+

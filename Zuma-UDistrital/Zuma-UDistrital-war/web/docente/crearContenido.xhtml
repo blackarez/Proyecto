@@ -1,0 +1,56 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        Crear Contenido Nuevo.
+        <center>
+            <h1>Crear Contenido</h1>
+            <h:form>
+                <p:panelGrid id="panel" columns="3">
+                    
+                    <h:outputText value="Titulo :"></h:outputText>
+                    <p:inputText id="titulo" value="#{docenteCrearContenidoBean.tituloContenido}" required="true" requiredMessage="Tirulo requerido"></p:inputText>
+                    <p:message for="titulo" display="icon"></p:message>
+                    
+                    <h:outputText value="Tema :"></h:outputText>
+                    <p:inputText id="tema" value="#{docenteCrearContenidoBean.temaContenido}" required="true" requiredMessage="Tema requerido"></p:inputText>
+                    <p:message for="tema" display="icon"></p:message>
+                    
+                    <h:outputText value="Introducción :"></h:outputText>
+                    <p:inputTextarea id="introduccion" value="#{docenteCrearContenidoBean.introduccionContenido}" required="true" requiredMessage="Introducción requerida"></p:inputTextarea>
+                    <p:message for="introduccion" display="icon"></p:message>
+                    
+                    <h:outputText value="Resumen :"></h:outputText>
+                    <p:inputTextarea id="resumen" value="#{docenteCrearContenidoBean.resumenContenido}" required="true" requiredMessage="Resumen requerido"></p:inputTextarea>
+                    <p:message for="resumen" display="icon"></p:message>
+                    
+                    <h:outputText value="Explicación :"></h:outputText>
+                    <p:inputTextarea id="explicacion" value="#{docenteCrearContenidoBean.explicacionContenido}" required="true" requiredMessage="Explicacion requerida"></p:inputTextarea>
+                    <p:message for="explicacion" display="icon"></p:message>
+                    
+                    <h:outputText value="Grupo :"></h:outputText>
+                    <p:selectOneMenu id="grupos" value="#{docenteCrearContenidoBean.grupoContenido}" required="true" requiredMessage="Grupo requerido">
+                        <f:selectItem itemLabel="Ninguno"/>
+                        <f:selectItems value="#{docenteCrearContenidoBean.listadoGrupos}"/>
+                    </p:selectOneMenu>
+                    <p:message  for="grupos" display="icon"/>
+                    
+                </p:panelGrid>
+                
+                <h:panelGroup>
+                    <p:commandButton value="Crear Contenido" ajax="false" action="#{docenteCrearContenidoBean.crearContenido()}"/>
+                </h:panelGroup>
+            </h:form>
+            <h:form>
+                <p:commandButton id="botonCancelar" value="Cancelar" action="inicio" ajax="false"/>
+            </h:form>
+        </center>
+    </h:body>
+</html>
+

@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <h1>Eliminar usuario</h1>
+
+        <center>
+            <h:form>
+                <p:panelGrid columns="3">
+                    <f:facet name="header">
+                        <h:outputText value="Editar Usuario"/>
+                    </f:facet>
+                    <h:outputText value="Nombre :"/>
+                    <h:outputText id="nombre" value="#{adminElimianrUsuarioBean.nombre}"/>
+                    <p:message for="nombre" display="icon"/>
+
+                    <h:outputText value="Apellido :"/>
+                    <h:outputText id="apellido" value="#{adminElimianrUsuarioBean.apellido}"/>
+                    <p:message for="apellido" display="icon"/>
+
+                    <h:outputText value="Correo :"/>
+                    <h:outputText id="correo" value="#{adminElimianrUsuarioBean.correo}"></h:outputText>
+                    <p:message for="correo" display="icon"/>
+
+                    <h:outputText value="Rol :"/>
+                    <h:outputText id="rol" value="#{adminElimianrUsuarioBean.rol}"></h:outputText>
+                    <p:message for="rol" display="icon"/>
+                    
+                    <h:outputText value="Estado :"/>
+                    <h:outputText id="estado" value="#{adminElimianrUsuarioBean.estado}"></h:outputText>
+                    <p:message for="estado" display="icon"/>
+
+                    <f:facet name="footer">
+                        <center>
+                            <p:commandButton action="consultarUsuarios" value="Cancelar"  ajax="false"></p:commandButton>
+                            <p:commandButton action="#{adminElimianrUsuarioBean.eliminarUsuario()}" value="Eliminar"  ajax="false"></p:commandButton>
+                        </center>
+                    </f:facet>
+
+                </p:panelGrid>
+            </h:form>
+        </center>
+    </h:body>
+</html>
+

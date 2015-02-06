@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <center>
+            <h1>Universidad Distrital Fracisco Jose de Caldas</h1>
+            <h2>Grupos actuales</h2>
+            <p:dataTable var="grupo" value="#{grupoBean.grupos}">
+                <p:column headerText="Id">
+                    <h:outputText value="#{grupo.grupoId}" />
+                </p:column>
+
+                <p:column headerText="Estado">
+                    <h:outputText value="#{grupo.estadoGrupoId.estadoGrupoEstado}" />
+                </p:column>
+
+                <p:column headerText="Nombre de Grupo">
+                    <h:outputText value="#{grupo.grupoNombre}" />
+                </p:column>
+
+                <p:column headerText="Descripción">
+                    <h:outputText value="#{grupo.grupoDescripcion}" />
+                </p:column>
+                <p:column headerText="Pre-Requisitos">
+                    <h:outputText value="#{grupo.grupoPrerrequisitos}" />
+                </p:column>
+                <p:column headerText="Opción">
+                    <p:commandLink value="Matricularme" action="#{grupoBean.matricularNuevoEstudiante()}">
+                        <f:setPropertyActionListener target="#{grupoBean.grupoSeleccionado}" value="#{grupo}"/>
+                        <f:setPropertyActionListener target="#{grupoBean.idNuevoEstudiante}" value="#{loginBean.usuarioActual.usuarioId}"/>
+                    </p:commandLink>
+                </p:column>
+            </p:dataTable>
+
+            <h:form>
+                <p:commandButton action="inicio?faces-redirect=true" value="Volver"  ajax="false"></p:commandButton>
+            </h:form>
+        </center>
+    </h:body>
+</html>
+
