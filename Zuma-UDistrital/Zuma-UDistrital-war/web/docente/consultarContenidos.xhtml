@@ -61,16 +61,30 @@
                             <!-- Mostrar reporte del contenido seleccionado. -->
                         </p:commandLink>
                         &nbsp;
-                        <p:commandLink value="Editar" action="editarCodigoQR?faces-redirect=true">
-                            <!-- Cargar formulario para edicion del contenido. -->
+                        <p:commandLink value="Editar" action="editarContenido?faces-redirect=true">
+                            <f:setPropertyActionListener target="#{docenteEditarContenidoBean.id}" value="#{contenido.contenidoId}"/>
+                            <f:setPropertyActionListener target="#{docenteEditarContenidoBean.titulo}" value="#{contenido.contenidoTitulo}"/>
+                            <f:setPropertyActionListener target="#{docenteEditarContenidoBean.tema}" value="#{contenido.contenidoTema}"/>
+                            <f:setPropertyActionListener target="#{docenteEditarContenidoBean.resumen}" value="#{contenido.contenidoResumen}"/>
+                            <f:setPropertyActionListener target="#{docenteEditarContenidoBean.explicacion}" value="#{contenido.contenidoExplicacion}"/>
+                            <f:setPropertyActionListener target="#{docenteEditarContenidoBean.grupo}" value="#{contenido.grupoId.grupoNombre}"/>
                         </p:commandLink>
                         &nbsp;
-                        <p:commandLink value="Eliminar" action="eliminarCodigoQR">
-                            <!-- cArgar formulario para mostrar lo que va eliminar y confirmar -->
+                        <p:commandLink value="Eliminar" action="eliminarContenido">
+                            <f:setPropertyActionListener target="#{docenteEliminarContenidoBean.id}" value="#{contenido.contenidoId}"/>
+                            <f:setPropertyActionListener target="#{docenteEliminarContenidoBean.titulo}" value="#{contenido.contenidoTitulo}"/>
+                            <f:setPropertyActionListener target="#{docenteEliminarContenidoBean.tema}" value="#{contenido.contenidoTema}"/>
+                            <f:setPropertyActionListener target="#{docenteEliminarContenidoBean.resumen}" value="#{contenido.contenidoResumen}"/>
+                            <f:setPropertyActionListener target="#{docenteEliminarContenidoBean.explicacion}" value="#{contenido.contenidoExplicacion}"/>
+                            <f:setPropertyActionListener target="#{docenteEliminarContenidoBean.grupo}" value="#{contenido.grupoId.grupoNombre}"/>
                         </p:commandLink>
                     </p:column>
 
                 </p:dataTable>
+                <center>
+                    <p:commandButton action="inicio" value="Volver"/>
+                    <p:commandButton action="crearContenido" value="Crear Contenido"/>
+                </center>
             </h:form>
         </center>
     </h:body>

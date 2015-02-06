@@ -62,7 +62,7 @@ public class ContenidoFacade extends AbstractFacade<Contenido> implements Conten
     }
 
     @Override
-        public List<Contenido> listaContenidosPorDocente(int idDocente){
+    public List<Contenido> listaContenidosPorDocente(int idDocente) {
         try {
             System.out.println("entro al try...");
             Query consulta = em.createQuery("select c from Contenido c,Grupo g,UsuarioGrupo ug where c.grupoId = g.grupoId and g.grupoId=ug.grupoId and ug.usuarioId.usuarioId=:idDocente");
@@ -72,9 +72,41 @@ public class ContenidoFacade extends AbstractFacade<Contenido> implements Conten
             System.out.println("le metido el parametro.");
             return consulta.getResultList();
         } catch (Exception e) {
-            System.out.println("Hooollaaaaaaaaaaaaaaaaaaaaaaaaa Exception en listaContenidosPorDocente = "+e);
+            System.out.println("Hooollaaaaaaaaaaaaaaaaaaaaaaaaa Exception en listaContenidosPorDocente = " + e);
+            return null;
+        }
+    }
+
+    @Override
+    public Contenido actualizarContenido(int idContenido, String titulo, String tema, String resumen, String explicacion, int grupo) {
+        try {
+            System.out.println("llamo a update conten");
+            Contenido contenidoEditar = em.find(Contenido.class, idContenido);
+            if (contenidoEditar != null) {
+                System.out.println("lo encontro.");
+                contenidoEditar.setContenidoTitulo(titulo);
+                contenidoEditar.setContenidoTema(tema);
+                contenidoEditar.setContenidoResumen(resumen);
+                contenidoEditar.setContenidoExplicacion(explicacion);
+                contenidoEditar.setGrupoId(em.find(Grupo.class, grupo));
+                return contenidoEditar;
+            } else {
+                return null;
+            }
+        } catch (Exception e) {
             return null;
         }
     }
     
+    
+    @Override
+    public boolean eliminarContenidoPorId(int id){
+        try {
+            em.remove(em.find(Contenido.class,id));
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
 }

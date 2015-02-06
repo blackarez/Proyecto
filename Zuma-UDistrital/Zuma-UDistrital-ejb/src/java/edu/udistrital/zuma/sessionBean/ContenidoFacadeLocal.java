@@ -36,4 +36,8 @@ public interface ContenidoFacadeLocal {
 
     List<Contenido> listaContenidosPorDocente(int idDocente);
     
+    Contenido actualizarContenido(int idContenido, String titulo, String tema, String resumen, String explicacion, int grupo);
+    
+    boolean eliminarContenidoPorId(int id);
+    
 }

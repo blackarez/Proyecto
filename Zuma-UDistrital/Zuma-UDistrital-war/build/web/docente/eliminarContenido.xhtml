@@ -1,0 +1,57 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <h1>Eliminar Contenido</h1>
+
+        <center>
+            <h:form>
+                <p:panelGrid columns="3">
+                    <f:facet name="header">
+                        <h:outputText value="Eliminar Contenido"/>
+                    </f:facet>
+
+                    <h:outputText value="Id :"/>
+                    <h:outputText id="id" value="#{docenteEliminarContenidoBean.id}"/>
+                    <p:message for="id" display="icon"/>
+
+                    <h:outputText value="Titulo :"/>
+                    <h:outputText id="titulo" value="#{docenteEliminarContenidoBean.titulo}"/>
+                    <p:message for="titulo" display="icon"/>
+
+                    <h:outputText value="Tema :"/>
+                    <h:outputText id="tema" value="#{docenteEliminarContenidoBean.tema}"/>
+                    <p:message for="tema" display="icon"/>
+
+                    <h:outputText value="Resumen :"/>
+                    <h:outputText id="resumen" value="#{docenteEliminarContenidoBean.resumen}"/>
+                    <p:message for="resumen" display="icon"/>
+
+                    <h:outputText value="Explicación :"/>
+                    <h:outputText id="explicacion" value="#{docenteEliminarContenidoBean.explicacion}"/>
+                    <p:message for="explicacion" display="icon"/>
+                    
+                    <h:outputText value="Grupo :"/>
+                    <h:outputText id="grupo" value="#{docenteEliminarContenidoBean.grupo}"/>
+                    <p:message for="grupo" display="icon"/>
+                    
+                    <f:facet name="footer">
+                        <center>
+                            <p:commandButton action="consultarContenidos" value="Cancelar"  ajax="false"></p:commandButton>
+                            <p:commandButton action="#{docenteEliminarContenidoBean.eliminarContenido()}" value="Eliminar"  ajax="false"></p:commandButton>
+                        </center>
+                    </f:facet>
+
+                </p:panelGrid>
+            </h:form>
+        </center>
+       
+    </h:body>
+</html>
+

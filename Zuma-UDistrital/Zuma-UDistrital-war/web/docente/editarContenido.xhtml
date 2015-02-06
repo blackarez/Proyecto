@@ -1,0 +1,59 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <h1>Editar Contenido</h1>
+        <center>
+            <h:form>
+                <p:panelGrid columns="3">
+
+                    <f:facet name="header">
+                        <h:outputText value="Editar CodigoQR"/>
+                    </f:facet>
+
+                    <h:outputText value="Id :"/>
+                    <h:outputText id="id" value="#{docenteEditarContenidoBean.id}"/>
+                    <p:message for="id" display="icon"/>
+                    
+                    <h:outputText value="Titulo :"/>
+                    <h:inputText id="titulo" value="#{docenteEditarContenidoBean.titulo}" required="true"/>
+                    <p:message for="titulo" display="icon"/>
+
+                    <h:outputText value="Tema :"/>
+                    <h:inputText id="tema" value="#{docenteEditarContenidoBean.tema}" required="true"/>
+                    <p:message for="tema" display="icon"/>
+
+                    <h:outputText value="Resumen :"/>
+                    <h:inputTextarea id="resumen" value="#{docenteEditarContenidoBean.resumen}" required="true"/>
+                    <p:message for="resumen" display="icon"/>
+
+                    <h:outputText value="Explicación :"/>
+                    <h:inputTextarea id="explicacion" value="#{docenteEditarContenidoBean.explicacion}" required="true"/>
+                    <p:message for="explicacion" display="icon"/> 
+
+                    <h:outputText value="Grupo :"/>
+                    <p:selectOneMenu id="grupo" value="#{docenteEditarContenidoBean.grupo}" required="true" requiredMessage="campo requerido">
+                        <f:selectItem itemLabel="Seleccionar"/>
+                        <f:selectItems value="#{docenteConsultarContenidosBean.grupoDeDocente}"/>
+                    </p:selectOneMenu>
+                    <p:message for="grupo" display="icon"/>
+
+                    <f:facet name="footer">
+                        <center>
+                            <p:commandButton action="consultarContenidos" value="Cancelar"  ajax="false"></p:commandButton>
+                            <p:commandButton action="#{docenteEditarContenidoBean.editarContenido()}" value="Guardar"></p:commandButton>
+                        </center>
+                    </f:facet>
+
+                </p:panelGrid>
+            </h:form>
+        </center>
+    </h:body>
+</html>
+
