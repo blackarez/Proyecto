@@ -1,0 +1,63 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+        <f:loadBundle basename="edu/udistrital/zuma/recursos/login" var="login"/>
+        <f:loadBundle basename="edu/udistrital/zuma/recursos/registro" var="registro"/>
+        <!--<title><h:outputText value="{registro.tituloPagina}"></h:outputText></title>-->
+
+        <h:outputStylesheet name="./css/base.css"/>
+        <h:outputStylesheet name="./css/estilo.css"/>
+        <h:outputStylesheet name="./css/nivo-slider.css"/>
+        <title>zuma</title>
+    </h:head>
+
+    <h:body>
+        <div id="pagina">
+            <div class="header">
+                <div id="escudos">
+                    <div class="cuerpoPagina">
+                        <div id="escudoZuma"></div>			
+                        <div id="escudoUd"></div>
+                    </div>
+                </div>
+                <div class="titulo">
+                    <div class="cuerpoPagina">			
+                        <div id="titulo">
+                            <h1>Zuma</h1>
+                            <h2>Métodos numericos online</h2>
+                        </div>					
+                    </div>
+                </div>
+
+                <div id="perfil">
+                </div>
+                <div id="lineaBlanca"></div>
+            </div>
+            <div class="cuerpo">
+                <div class="cuerpoPagina">
+                    <div class="cuerpoContenido" style="padding: 15px">
+                        <ui:insert name="content"></ui:insert>
+                    </div>
+                </div>
+            </div>
+            <div class="footer">
+                <div id="lineaBlanca"></div>
+                <div id="footerAzul">
+                    <div class="cuerpoPagina">
+                        <p>Universidad Distrital Francisco Jose de Caldas</p>
+                        <p>Tecnologia en Sistematización de datos</p>
+                        <p>&copy; CopyRight 2015</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </h:body>
+
+</html>

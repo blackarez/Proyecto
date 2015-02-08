@@ -2,23 +2,30 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:p="http://primefaces.org/ui">
-    <h:head>
-        <title>Facelet Title</title>
-    </h:head>
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <!--  <h:head>
+          <title>Facelet Title</title>
+      </h:head>
+    -->
     <h:body>
-        <center>
-            <h1>Bienvenido a Zuma</h1>
-            <h3>¿No puede iniciar sesión?</h3>
-            <br/>
-            <h:form id="formularioRecordarClave">
-                <p:panelGrid columns="2">
-                    <h:outputText value="Correo Electronico"/>
-                    <p:inputText id="correoElectronio" value="#{recordatorioClaveBean.correoElectronico}"/>
-                </p:panelGrid>
-                <p:commandButton value="Recordar" action="#{recordatorioClaveBean.recordarClave()}"/>
-            </h:form>
-        </center>
+        <ui:composition template="./plantillas/plantillaBase.xhtml">
+            <ui:define name="content">
+                <center>
+                    <div class="divCuadro" style="width: 300px;padding-top: 4px;margin-bottom: 15px;">
+                    <h1>Bienvenido a Zuma</h1>
+                    <h3>¿No puede iniciar sesión?</h3>
+                    <br/>
+                    <h:form id="formularioRecordarClave">
+                        <h:panelGrid columns="1">
+                            <h:outputText value="Correo Electronico"/>
+                            <p:inputText id="correoElectronio" value="#{recordatorioClaveBean.correoElectronico}"/>
+                        </h:panelGrid>
+                        <p:commandButton value="Recordar" action="#{recordatorioClaveBean.recordarClave()}" style="margin-top:20px;"/>
+                    </h:form>
+                    </div>
+                </center>
+            </ui:define>
+        </ui:composition>
     </h:body>
 </html>
-

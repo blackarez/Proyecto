@@ -1,0 +1,99 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <h:outputStylesheet name="./css/base.css"/>
+        <h:outputStylesheet name="./css/estilo.css"/>
+        <title>Invitado</title>
+        <h:outputScript name="./js/jquery.min.js"> </h:outputScript>
+        <h:outputScript name="./js/acciones.js"> </h:outputScript>
+    </h:head>
+
+    <h:body>
+        <div id="pagina">
+            <div class="header">
+                <div id="escudos">
+                    <div class="cuerpoPagina">
+                        <div id="escudoZuma"></div>			
+                        <div id="escudoUd"></div>
+                        <div id="LineaP"></div>
+			<div id="informacion">
+                            <h:outputLabel value = "Error: No ha iniciado sesion" rendered="#{!loginBean.usuarioLogueado}"/>
+                            
+                                <p>#{loginBean.usuarioActual.usuarioNombre} #{loginBean.usuarioActual.usuarioApellido}</p>
+                                <p><strong>Fecha :</strong> #{loginBean.fechaHoy} </p>
+                                <p><strong>Ultimo Ingreso :</strong>#{loginBean.ultimoIngreso}</p>
+                            
+                        </div>
+                    </div>
+                </div>
+                <div class="titulo">
+                    <div class="cuerpoPagina">			
+                        <div id="titulo">
+                            <h1>Zuma</h1>
+                            <h2>Métodos numericos online</h2>
+                        </div>					
+                    </div>
+                </div>
+
+                <div id="perfil">
+                </div>
+                <div id="lineaBlanca"></div>
+            </div>
+            <div class="cuerpo">
+                <div class="cuerpoPagina">
+                    <div class="cuerpoContenido">
+                        <div id="panelDerecho">
+                            <div class="menuLateral">
+                                <ul>
+                                    <li>
+                                        <a id="menu1" class="toggle">Grupo</a>
+                                        <ul class="menu1 subMenu">				
+                                            <li>
+                                                <p:commandLink action="#{loginBean.irConsultaGrupo()}" value="Consultar Grupos"></p:commandLink>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a id="menu2" class="toggle">Perfil</a>			
+                                        <ul  class="menu2 subMenu">			
+                                            <li>
+                                                <!--<a>Ver perfil</a>-->
+                                                <p:commandLink action="#{loginBean.irConsultaPerfil()}" value="Ver Perfil" ></p:commandLink>
+                                            </li>
+                                            <li>
+                                                <p:commandLink action="editarClave?faces-redirect=true" value="Cambiar Clave"></p:commandLink>
+                                            </li>
+                                            <li>
+                                                <p:commandLink action="#{loginBean.cerrarSesion()}" value="Cerrrar Sesión"></p:commandLink>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div id="panelIzquierdo">
+                            <ui:insert name="content"></ui:insert>
+                        </div>                        
+                    </div>
+                </div>
+            </div>
+            <div class="footer">
+                <div id="lineaBlanca"></div>
+                <div id="footerAzul">
+                    <div class="cuerpoPagina">
+                        <p>Universidad Distrital Francisco Jose de Caldas</p>
+                        <p>Tecnologia en Sistematización de datos</p>
+                        <p>&copy; CopyRight 2015</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </h:body>
+
+</html>

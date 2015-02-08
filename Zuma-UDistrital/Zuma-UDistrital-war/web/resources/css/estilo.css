@@ -1,0 +1,43 @@
+.ui-button {
+border-radius: 0px;
+background: #d7ebf9;
+width: 250px;
+}
+
+.ui-inputfield {
+border-radius: 0px;
+width: 240px;
+font-size: 14px;
+padding: 7px 4px !important;
+}
+.divCuadro{
+    background: #f4f4f4;
+    padding: 0px 5px 0px 5px;
+    padding-bottom: 20px;
+    margin: 15px auto 0px;
+}
+
+.divLogin table{
+    margin-left: 10px;
+}
+
+.divTabla{
+    font-family: lucida Sans;
+    font-size: 12px;
+}
+.ui-panelgrid-header td {
+    color: #444;
+    background: #deedf7;
+    padding: 8px;
+    font-size: 13px;
+}
+.ui-panelgrid-cell {
+    background-color: #FFFFFF;
+}
+
+.ui-datatable thead th {
+    color: #444;
+    background: #deedf7;
+    padding: 8px;
+    font-size: 13px;
+}

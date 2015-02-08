@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <link rel="stylesheet" type="text/css" href="resources/css/base.css">
+    <link rel="stylesheet" type="text/css" href="resources/css/estilo.css">
+
+    <link rel="stylesheet" href="resources/themes/default/default.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="resources/themes/light/light.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="resources/themes/dark/dark.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="resources/themes/bar/bar.css" type="text/css" media="screen" />
+
+    <link rel="stylesheet" href="resources/css/nivo-slider.css" type="text/css" media="screen" />
+    <title>zuma</title>
+</head>
+<body>
+    <div id="pagina">
+        <div class="header">
+            <div id="escudos">
+                <div class="cuerpoPagina">
+                    <div id="escudoZuma"></div>
+
+                    <div id="escudoUd"></div>
+                </div>
+            </div>
+            <div class="titulo">
+                <div class="cuerpoPagina">			
+                    <div id="titulo">
+                        <h1>Zuma</h1>
+                        <h2>Métodos numericos online</h2>
+                    </div>					
+                </div>
+            </div>
+
+            <div id="perfil">
+                <div class="cuerpoPagina">
+                    <a href="faces/index.xhtml" style="">Ingresa</a>
+                </div>
+            </div>
+
+        </div>
+        <div class="cuerpo">
+            <div class="cuerpoPagina">
+
+                <div id="queEs">
+                    <div class="slider-wrapper theme-light">
+                        <div id="slider" class="nivoSlider">
+                            <img src="resources/img/slide1.jpg" title="#caption1" />
+                            <img src="resources/img/slide2.jpg" title="#caption2" />
+                            <img src="resources/img/slide3.jpg" title="#caption3"/>
+                        </div>
+                        <div id="caption1" style="display: none;">
+                            <h3>¿Que es Zuma?</h3>
+                            <p>Zuma, es una plataforma web basada en realidad aumentada para apoyar la enseñanza de métodos numericos...</p>
+                        </div>
+                        <div id="caption2" style="display: none;">
+                            <h3>TEMÁTICA</h3>
+                            <p>Los métodos numericos son procedimientos aritméticos y logicos que dan una solución numerica a problemas de calculo.</p>
+                        </div>
+                        <div id="caption3" style="display: none;">
+                            <h3>CARACTERISTICAS</h3>
+                            <ul>
+                                <li>Tecnología y contenidos digitales.</li>
+                                <li>Animaciones de métodos numericos.</li>
+                                <li>Enseñanza y Realidad aumentada.</li>
+                                <li>Sistemas de comunicación y evaluación.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+                <div id="caracteristica">
+                    <div style="background-color: #99CCFF;">
+                            <h3>TEMÁTICA</h3>
+                            <p>Los métodos numericos son procedimientos aritméticos y logicos que dan una solución numerica a problemas de calculo.</p>
+                    </div>				
+                    <div style="background-color: #CCFFCC;">
+                        <h3>CARACTERISTICAS</h3>
+                        <ul>
+                            <li>Tecnología y contenidos digitales.</li>
+                            <li>Animaciones de métodos numericos.</li>
+                            <li>Enseñanza y Realidad aumentada.</li>
+                            <li>Sistemas de comunicación y evaluación.</li>
+                        </ul>	
+                    </div>
+
+                    <!---->
+                </div>
+                <div id="tematica">
+
+                </div>
+                <div id="yo">
+                    <div class="div50">
+                        <img src="resources/img/imgPerfil.png" >
+                    </div>
+                    <div class="div50">
+                        <p>Nombre: </p>
+                        <p>edad: </p>
+                        <p>Nombre: </p>
+                        <p>Nombre: </p>
+                        <p>Nombre: </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer">
+            <div id="lineaBlanca"></div>
+            <div id="footerAzul">
+                <div class="cuerpoPagina">
+                    <p>Universidad Distrital Francisco Jose de Caldas</p>
+                    <p>Tecnologia en Sistematización de datos</p>
+                    <p>&copy; CopyRight 2015</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="resources/js/jquery.min.js" type="text/javascript"></script>
+    <script src="resources/js/jquery.nivo.slider.js" type="text/javascript"></script>
+    <script type="text/javascript">
+    $(window).load(function() {
+        $('#slider').nivoSlider({
+            effect: 'fade',
+            slices: 15,
+            boxCols: 8,
+            boxRows: 4,
+            animSpeed: 500,
+            pauseTime: 3000,
+            startSlide: 0,
+            directionNav: true,
+            controlNav: true,
+            controlNavThumbs: false,
+            pauseOnHover: true,
+            manualAdvance: false,
+            prevText: 'Prev',
+            nextText: 'Next',
+            randomStart: false,
+        });
+    });
+    </script>
+</body>
+</html>

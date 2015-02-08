@@ -3,50 +3,55 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:p="http://primefaces.org/ui"
-      xmlns:f="http://java.sun.com/jsf/core">
-    <h:head>
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <!--<h:head>
         <f:loadBundle basename="edu/udistrital/zuma/recursos/login" var="login"/>
         <title>Login - Zuma</title>
     </h:head>
+    -->
     <h:body>
-        <center>
-            <!-- Formualrio de inicio de sesion -->
-            <h:form id="formularioLogin">
-                <p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" />
-                <h:panelGrid id="panelLogin" columns="3" cellpadding="5">
-                    <f:facet name="header">
-                        <h1><h:outputText value="#{login['pLogin.mensajeIniciar']}"/></h1>
-                    </f:facet>
+        <ui:composition template="./plantillas/plantillaBase.xhtml">
+            <ui:define name="content">
+                <div class="divCuadro" style="width: 350px;">
+                    <center>
+                        <!-- Formualrio de inicio de sesion -->
+                        <h:form id="formularioLogin">
+                            <p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" />
+                            <h:panelGrid id="panelLogin" columns="2" cellpadding="5">
+                                <f:facet name="header">
+                                    <h1><h:outputText value="#{login['pLogin.mensajeIniciar']}"/></h1>
+                                </f:facet>
+                                <h:outputText value="#{login['pLogin.etiquetaCorreo']}" /><h:outputText value="" />
+                                <p:inputText id="correo" value="#{loginBean.usuario}" required="true" requiredMessage="El correo es un campo requerido" />
+                                <p:message for="correo" display="icon"></p:message>
 
-                    <h:outputText value="#{login['pLogin.etiquetaCorreo']}" />
-                    <p:inputText id="correo" value="#{loginBean.usuario}" required="true" requiredMessage="El correo es un campo requerido"/>
-                    <p:message for="correo" display="icon"></p:message>
+                                <h:outputText value="#{login['pLogin.etiquetaClave']}" /><h:outputText value="" />
+                                <p:password id="clave" value="#{loginBean.clave}" required="true" requiredMessage="La clave es un campo requerido" />
+                                <p:message for="clave" display="icon"></p:message>
+                            </h:panelGrid>
+                            <p:commandButton value="#{login['pLogin.etiquetaBoton']}" action="#{loginBean.ingresar()}" update="panelLogin" style="margin-top: 15px;"/>
+                        </h:form>
+                    </center>
+                </div>
+                <!-- Inivitacion a registrarse -->
+                <h:form id="fIrARegistro">
+                    <p:growl id="growl" life="2000" />
+                    <center style="margin: 0px 0px 20px 0px;">
+                        <br/><br/>
+                        <strong><h:outputLabel value="#{login['pLogin.etiquetaNoCuenta']} " style="margin: 0px 60px 0px 0px;"/></strong>
+                        <p:commandLink id="registro" update="growl" action="#{loginBean.irARegistro()}">
+                            <h:outputText value="#{login['pLogin.etiquetaRegistrese']}"/>
+                        </p:commandLink>
+                        <br/>
+                        <strong><h:outputLabel value="¿Olvidó su clave? " style="margin: 0px 52px 0px -5px;"/></strong>
+                        <p:commandLink id="recordarClave" update="growl" action="#{loginBean.irARecordarClave()}">
+                            <h:outputText value="Recordar Clave."/>
+                        </p:commandLink>
+                    </center>
+                </h:form>
 
-                    <h:outputText value="#{login['pLogin.etiquetaClave']}" />
-                    <p:password id="clave" value="#{loginBean.clave}" required="true" requiredMessage="La clave es un campo requerido"/>
-                    <p:message for="clave" display="icon"></p:message>
-                </h:panelGrid>
-                <p:commandButton value="#{login['pLogin.etiquetaBoton']}" action="#{loginBean.ingresar()}" update="panelLogin"/>
-            </h:form>
-        </center>
-
-        <!-- Inivitacion a registrarse -->
-        <h:form id="fIrARegistro">
-            <p:growl id="growl" life="2000" />
-            <center>
-                <br/><br/>
-                <strong><h:outputLabel value="#{login['pLogin.etiquetaNoCuenta']} " /></strong>
-                <p:commandLink id="registro" update="growl" action="#{loginBean.irARegistro()}">
-                    <h:outputText value="#{login['pLogin.etiquetaRegistrese']}"/>
-                </p:commandLink>
-                <br/>
-                <strong><h:outputLabel value="¿Olvidó su clave? " /></strong>
-                <p:commandLink id="recordarClave" update="growl" action="#{loginBean.irARecordarClave()}">
-                    <h:outputText value="Recordar Clave."/>
-                </p:commandLink>
-            </center>
-        </h:form>
-
+            </ui:define>
+        </ui:composition>
     </h:body>
 </html>
-

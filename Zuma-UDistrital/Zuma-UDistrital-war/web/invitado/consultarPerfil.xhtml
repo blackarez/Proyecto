@@ -3,47 +3,47 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:p="http://primefaces.org/ui"
-      xmlns:f="http://java.sun.com/jsf/core">
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
     <h:head>
         <title>Facelet Title</title>
     </h:head>
     <h:body>
-        <center>
-            <h1>Consulta Perfil</h1>
-            <h2>Invitado</h2>
-            <h:outputLabel value = "Error: No ha iniciado sesion" rendered="#{!loginBean.usuarioLogueado}"/>
-            <h:form id="formularioPerfil" rendered="#{loginBean.usuarioLogueado}">
+        <ui:composition template="./../plantillas/plantillaInvitado.xhtml">
+            <ui:define name="content">
+                <div class="divTabla" style="margin: 10px;">
+                    <center>
+                        <h:outputLabel value = "Error: No ha iniciado sesion" rendered="#{!loginBean.usuarioLogueado}"/>
+                        <h:form id="formularioPerfil" rendered="#{loginBean.usuarioLogueado}">
+                            <p:panelGrid columns="2" style="width: 520px;">
+                                <f:facet name="header">
+                                    <h:outputText value="Consulta Perfil" />
+                                </f:facet>
 
-                <p:panelGrid columns="2">
-                    <f:facet name="header">
-                        <h:outputText value="Perfil de Usuario" />
-                    </f:facet>
+                                <h:outputText value="Nombre :" />
+                                <h:outputText value="#{loginBean.usuarioActual.usuarioNombre}" />
 
-                    <h:outputText value="Nombre :" />
-                    <h:outputText value="#{loginBean.usuarioActual.usuarioNombre}" />
+                                <h:outputText value="Apellido :" />
+                                <h:outputText value="#{loginBean.usuarioActual.usuarioApellido}" />
 
-                    <h:outputText value="Apellido :" />
-                    <h:outputText value="#{loginBean.usuarioActual.usuarioApellido}" />
+                                <h:outputText value="Correo :" />
+                                <h:outputText value="#{loginBean.usuarioActual.usuarioCorreo}" />
 
-                    <h:outputText value="Correo :" />
-                    <h:outputText value="#{loginBean.usuarioActual.usuarioCorreo}" />
+                                <h:outputText value="Estado :" />
+                                <h:outputText value="#{loginBean.usuarioActual.estadoUsuario.estadoUsuarioEstado}" />
 
-                    <h:outputText value="Estado :" />
-                    <h:outputText value="#{loginBean.usuarioActual.estadoUsuario.estadoUsuarioEstado}" />
-
-                    <h:outputText value="Rol :" />
-                    <h:outputText value="#{loginBean.usuarioActual.rolId.rolNombre}" />
-
-                    <f:facet name="footer">
-                        <center>
-                            <p:commandButton action="editarPerfil" value="Editar"  ajax="false"></p:commandButton>
-                            <p:commandButton action="inicio" value="Cancelar"  ajax="false"></p:commandButton>
-                        </center>
-                    </f:facet>                
-                </p:panelGrid>
-
-            </h:form>
-        </center>
+                                <h:outputText value="Rol :" />
+                                <h:outputText value="#{loginBean.usuarioActual.rolId.rolNombre}" />
+                            </p:panelGrid>
+                            <center style="margin: 10px 0px 20px;">
+                                <p:commandButton action="editarPerfil" value="Editar"  ajax="false" style="margin-right: 18px;"></p:commandButton>
+                                <p:commandButton action="inicio" value="Cancelar"  ajax="false"></p:commandButton>
+                            </center>
+                        </h:form>
+                    </center>  
+                </div>     
+            </ui:define>
+        </ui:composition>
     </h:body>
 </html>
 

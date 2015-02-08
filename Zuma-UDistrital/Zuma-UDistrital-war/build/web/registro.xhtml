@@ -3,55 +3,63 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:p="http://primefaces.org/ui">
-    <h:head>
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <!--<h:head>
         <f:loadBundle basename="edu/udistrital/zuma/recursos/registro" var="registro"/>
-        <title><h:outputText value="#{registro.tituloPagina}"></h:outputText></title>
+        <title><h:outputText value="{registro.tituloPagina}"></h:outputText></title>
     </h:head>
+    -->
     <h:body>
-        <!-- Registrese como invitado -->
-        <center>
-            <h1><h:outputText value="#{registro['pRegistro.registrese']}"></h:outputText></h1>
-        </center>
-        <!-- Formulario de Registro -->
-        <center>
-            <h:form>
-                <p:growl id="growl" showDetail="true" sticky="true" />
-                <h:panelGrid id="panel" columns="3">
-                    <h:outputText value="#{registro['pRegistro.etiquetaNombre']}"></h:outputText>
-                    <p:inputText id="nombre" value="#{registroBean.nombre}" required="true"></p:inputText>
-                    <p:message for="nombre" display="icon"></p:message>
-
-                    <h:outputText value="#{registro['pRegistro.etiquetaApellido']}"></h:outputText>
-                    <p:inputText id="apellido" value="#{registroBean.apellido}" required="true"></p:inputText>
-                    <p:message for="apellido" display="icon"></p:message>
-
-                    <h:outputText value="#{registro['pRegistro.etiquetaCorreo']}"></h:outputText>
-                    <p:inputText id="correo" value="#{registroBean.correo}" required="true"></p:inputText>
-                    <p:message for="correo" display="icon"></p:message>
-
-                </h:panelGrid>
-                <!-- Boton -->
-                <br/>
-                <h:panelGroup style="display:block; text-align:center">
-                    <p:commandButton id="botonIngresar" value="#{registro['pRegistro.etiquetaBoton']}" action="#{registroBean.registrarse()}" update="panel"/>
-                </h:panelGroup>
-            </h:form>
-
-            <h:form>
-                <p:growl id="growl" life="2000" />
-                <center>
-                    <br/><br/>
-                    <strong><h:outputLabel value="#{registro['pRegistro.etiquetaTieneCuenta']}" /></strong>
-                    <p:commandLink id="ajax" update="growl" action="#{registroBean.irALogin()}">
-                        <h:outputText value="Ingrese." />
-                    </p:commandLink>
-                </center>
-            </h:form>
+        <ui:composition template="./plantillas/plantillaBase.xhtml">
+            <ui:define name="content">
+                <div class="divCuadro" style="width: 370px;padding-top: 4px;">
+                    <!-- Registrese como invitado -->
+                    <center>
+                        <h1><h:outputText value="#{registro['pRegistro.registrese']}"></h:outputText></h1>
+                    </center>
+                    <!-- Formulario de Registro -->
 
 
-        </center>
-        
+                    <center>    
+                        <h:form>
+                            <p:growl id="growl" showDetail="true" sticky="true" />
+                            <h:panelGrid id="panel" columns="2">
+                                <h:outputText value="#{registro['pRegistro.etiquetaNombre']}"></h:outputText>
+                                <h:outputText value="" />
+                                <p:inputText id="nombre" value="#{registroBean.nombre}" required="true"></p:inputText>
+                                <p:message for="nombre" display="icon"></p:message>
+
+                                <h:outputText value="#{registro['pRegistro.etiquetaApellido']}"></h:outputText>
+                                <h:outputText value="" />
+                                <p:inputText id="apellido" value="#{registroBean.apellido}" required="true"></p:inputText>
+                                <p:message for="apellido" display="icon"></p:message>
+
+                                <h:outputText value="#{registro['pRegistro.etiquetaCorreo']}"></h:outputText>
+                                <h:outputText value="" />
+                                <p:inputText id="correo" value="#{registroBean.correo}" required="true"></p:inputText>
+                                <p:message for="correo" display="icon"></p:message>
+
+                            </h:panelGrid>
+                            <!-- Boton -->
+                            <br/>
+                            <h:panelGroup style="display:block; text-align:center">
+                                <p:commandButton id="botonIngresar" value="#{registro['pRegistro.etiquetaBoton']}" action="#{registroBean.registrarse()}" update="panel"/>
+                            </h:panelGroup>
+                        </h:form>
+                    </center>
+                </div>
+                <h:form>
+                    <center style="margin-bottom: 10px;">
+                        <p:growl id="growl" life="2000" />                        
+                        <br/><br/>
+                        <strong><h:outputLabel value="#{registro['pRegistro.etiquetaTieneCuenta']}" style="margin: 0px 101px 0px -3px;" /></strong>
+                        <p:commandLink id="ajax" update="growl" action="#{registroBean.irALogin()}">
+                            <h:outputText value="Ingrese." />
+                        </p:commandLink>
+                    </center>
+                </h:form>                
+            </ui:define>
+        </ui:composition>
     </h:body>
 </html>
-
