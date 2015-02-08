@@ -2,27 +2,34 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
     <h:head>
         <title>Facelet Title</title>
     </h:head>
     <h:body>
-        <center>
-            <h1>Bienvenido al Sistema</h1>
-            <h2>Administración</h2>
-            <h:outputLabel value = "Error: No ha iniciado sesion" rendered="#{!loginBean.usuarioLogueado}"/>
-            <h:form id="formularioBienvenida" rendered="#{loginBean.usuarioLogueado}">      
-                <p><strong>Bienvenido :</strong>#{loginBean.usuarioActual.usuarioNombre} #{loginBean.usuarioActual.usuarioApellido}</p>
-                <p><strong>Fecha :</strong> #{loginBean.fechaHoy} </p>
-                <p><strong>Ultimo Ingreso :</strong>#{loginBean.ultimoIngreso}</p>
-                <p:commandButton action="#{loginBean.cerrarSesion()}" value="Cerrar Sesión"  ajax="false"></p:commandButton>
-                <p:commandButton action="#{administradorBean.consultarPerfil()}" value="Ver Perfil"  ajax="false"></p:commandButton>
-                <p:commandButton action="#{administradorBean.editarClave()}" value="Cambiar Clave"  ajax="false"></p:commandButton>
-                <p:commandButton action="#{administradorBean.consultarUsuarios()}" value="Usuarios"  ajax="false"></p:commandButton>
-                <p:commandButton action="#{adminCodigosBean.consultarCodigos()}" value="Códigos QR"  ajax="false"></p:commandButton>
-                <p:commandButton action="#{adminConsultarRolBean.consultarRoles()}" value="Roles"  ajax="false"></p:commandButton>
-            </h:form>
-        </center>
+        <ui:composition template="./../plantillas/pantillaAdministrador.xhtml">
+            <ui:define name="content">
+                <center>
+                    <h1>Bienvenido:</h1>
+                    <h2>Administración</h2>
+                    <h:outputLabel value = "Error: No ha iniciado sesion" rendered="#{!loginBean.usuarioLogueado}"/>
+                    <h:form id="formularioBienvenida" rendered="#{loginBean.usuarioLogueado}">      
+                        <p><strong>Bienvenido: </strong>#{loginBean.usuarioActual.usuarioNombre} #{loginBean.usuarioActual.usuarioApellido}</p>
+                        <p><strong>Fecha: </strong> #{loginBean.fechaHoy} </p>
+                        <p><strong>Ultimo Ingreso: </strong>#{loginBean.ultimoIngreso}</p>
+                        <!--
+                        <p:commandButton action="{loginBean.cerrarSesion()}" value="Cerrar Sesión"  ajax="false"></p:commandButton>
+                        <p:commandButton action="{administradorBean.consultarPerfil()}" value="Ver Perfil"  ajax="false"></p:commandButton>
+                        <p:commandButton action="{administradorBean.editarClave()}" value="Cambiar Clave"  ajax="false"></p:commandButton>
+                        <p:commandButton action="{administradorBean.consultarUsuarios()}" value="Usuarios"  ajax="false"></p:commandButton>
+                        <p:commandButton action="{adminCodigosBean.consultarCodigos()}" value="Códigos QR"  ajax="false"></p:commandButton>
+                        <p:commandButton action="{adminConsultarRolBean.consultarRoles()}" value="Roles"  ajax="false"></p:commandButton>
+                        -->
+                    </h:form>
+                </center>
+            </ui:define>
+        </ui:composition>
     </h:body>
 </html>
 

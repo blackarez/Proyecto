@@ -3,60 +3,65 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:p="http://primefaces.org/ui"
-      xmlns:f="http://java.sun.com/jsf/core">
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
     <h:head>
         <title>Facelet Title</title>
     </h:head>
     <h:body>
-        <center>
-            <h1>Universidad Distrital Francisco José de Caldas</h1>
-            <h3>Lista Roles</h3>
-        </center>
-        <h:form>
-            <p:dataTable var="rol" value="#{adminConsultarRolBean.listaRoles}" widgetVar="tablaRoles" style="width:100%"
-                         emptyMessage="No hay roles con ese criterio" filteredValue="#{adminConsultarRolBean.listaRolesFiltrados}"
-                         rows="10"
-                         paginator="true"
-                         paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-                         rowsPerPageTemplate="5,10,15">
-                <f:facet name="header">
-                    <p:outputPanel>
-                        <h:outputText value="Buscar en todos los campos:"/>
-                        <p:inputText id="globalFilter" onkeyup="PF('tablaRoles').filter()" placeholder="Palabra clave"/>
-                    </p:outputPanel>
-                </f:facet>
+        <ui:composition template="./../plantillas/pantillaAdministrador.xhtml">
+            <ui:define name="content">
+                <center>
+                    <h1>Universidad Distrital Francisco José de Caldas</h1>
+                    <h3>Lista Roles</h3>
+                </center>
+                <h:form>
+                    <p:dataTable var="rol" value="#{adminConsultarRolBean.listaRoles}" widgetVar="tablaRoles" style="width:100%"
+                                 emptyMessage="No hay roles con ese criterio" filteredValue="#{adminConsultarRolBean.listaRolesFiltrados}"
+                                 rows="10"
+                                 paginator="true"
+                                 paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                                 rowsPerPageTemplate="5,10,15">
+                        <f:facet name="header">
+                            <p:outputPanel>
+                                <h:outputText value="Buscar en todos los campos:"/>
+                                <p:inputText id="globalFilter" onkeyup="PF('tablaRoles').filter()" placeholder="Palabra clave"/>
+                            </p:outputPanel>
+                        </f:facet>
 
-                <p:column filterBy="#{rol.rolId}" headerText="Id Rol">
-                    <h:outputText value="#{rol.rolId}" />
-                </p:column>
+                        <p:column filterBy="#{rol.rolId}" headerText="Id Rol">
+                            <h:outputText value="#{rol.rolId}" />
+                        </p:column>
 
 
-                <p:column filterBy="#{rol.rolNombre}" headerText="Nombre Rol">
-                    <h:outputText value="#{rol.rolNombre}" />
-                </p:column>
+                        <p:column filterBy="#{rol.rolNombre}" headerText="Nombre Rol">
+                            <h:outputText value="#{rol.rolNombre}" />
+                        </p:column>
 
-                <p:column filterBy="#{rol.rolDescripcion}" headerText="Descripción Rol">
-                    <h:outputText value="#{rol.rolDescripcion}" />
-                </p:column>
+                        <p:column filterBy="#{rol.rolDescripcion}" headerText="Descripción Rol">
+                            <h:outputText value="#{rol.rolDescripcion}" />
+                        </p:column>
 
-                <p:column headerText="Opciones">
-                    <p:commandLink value="Editar" action="editarRol?faces-redirect=true">
-                        <f:setPropertyActionListener target="#{adminEditarRolBean.id}" value="#{rol.rolId}"/>
-                        <f:setPropertyActionListener target="#{adminEditarRolBean.nombreRol}" value="#{rol.rolNombre}"/>
-                        <f:setPropertyActionListener target="#{adminEditarRolBean.descripcion}" value="#{rol.rolDescripcion}"/>
-                    </p:commandLink>
-                    &nbsp;
-                    <p:commandLink value="Eliminar" action="eliminarCodigoQR">
+                        <p:column headerText="Opciones">
+                            <p:commandLink value="Editar" action="editarRol?faces-redirect=true">
+                                <f:setPropertyActionListener target="#{adminEditarRolBean.id}" value="#{rol.rolId}"/>
+                                <f:setPropertyActionListener target="#{adminEditarRolBean.nombreRol}" value="#{rol.rolNombre}"/>
+                                <f:setPropertyActionListener target="#{adminEditarRolBean.descripcion}" value="#{rol.rolDescripcion}"/>
+                            </p:commandLink>
+                            &nbsp;
+                            <p:commandLink value="Eliminar" action="eliminarCodigoQR">
 
-                    </p:commandLink>
-                </p:column>
+                            </p:commandLink>
+                        </p:column>
 
-            </p:dataTable>
-            <center>
-                <p:commandButton action="inicio" value="Volver"/>
-                <p:commandButton action="crearCodigoQR" value="Crear Rol"/>
-            </center>
-        </h:form>
+                    </p:dataTable>
+                    <center>
+                        <p:commandButton action="inicio" value="Volver"/>
+                        <p:commandButton action="crearCodigoQR" value="Crear Rol"/>
+                    </center>
+                </h:form>    
+            </ui:define>
+        </ui:composition>
     </h:body>
 </html>
 

@@ -15,20 +15,18 @@
     </h:head>
 
     <h:body>
-        <div id="pagina">
+<div id="pagina">
             <div class="header">
                 <div id="escudos">
                     <div class="cuerpoPagina">
                         <div id="escudoZuma"></div>			
                         <div id="escudoUd"></div>
                         <div id="LineaP"></div>
-			<div id="informacion">
-                            <h:outputLabel value = "Error: No ha iniciado sesion" rendered="#{!loginBean.usuarioLogueado}"/>
-                                <p>Invitado</p>
-                                <p>#{loginBean.usuarioActual.usuarioNombre} #{loginBean.usuarioActual.usuarioApellido}</p>
-                                <p><strong>Fecha :</strong> #{loginBean.fechaHoy} </p>
-                                <p><strong>Ultimo Ingreso :</strong>#{loginBean.ultimoIngreso}</p>
-                            
+			<div id="informacion">                                                        
+                            <p><strong>Administrador</strong></p>
+                            <p>#{loginBean.usuarioActual.usuarioNombre} #{loginBean.usuarioActual.usuarioApellido}</p>
+                            <p><strong>Fecha :</strong> #{loginBean.fechaHoy} </p>
+                            <p><strong>Ultimo Ingreso :</strong>#{loginBean.ultimoIngreso}</p>                            
                         </div>
                     </div>
                 </div>
@@ -51,10 +49,16 @@
                             <div class="menuLateral">
                                 <ul>
                                     <li>
-                                        <a id="menu1" class="toggle">Grupo</a>
+                                        <a id="menu1" class="toggle">Administracion</a>
                                         <ul class="menu1 subMenu">				
                                             <li>
-                                                <p:commandLink action="#{loginBean.irConsultaGrupo()}" value="Consultar Grupos"></p:commandLink>
+                                                <p:commandLink action="#{administradorBean.consultarUsuarios()}" value="Usuarios"></p:commandLink>
+                                            </li>
+                                            <li>
+                                                <p:commandLink action="#{adminConsultarRolBean.consultarRoles()}" value="Roles"></p:commandLink>
+                                            </li>
+                                            <li>
+                                                <p:commandLink action="#{adminCodigosBean.consultarCodigos()}" value="Códigos QR"></p:commandLink>
                                             </li>
                                         </ul>
                                     </li>
@@ -63,13 +67,13 @@
                                         <ul  class="menu2 subMenu">			
                                             <li>
                                                 <!--<a>Ver perfil</a>-->
-                                                <p:commandLink action="#{loginBean.irConsultaPerfil()}" value="Ver Perfil" ></p:commandLink>
+                                                <p:commandLink action="#{administradorBean.consultarPerfil()}" value="Ver Perfil"></p:commandLink>
                                             </li>
                                             <li>
-                                                <p:commandLink action="editarClave?faces-redirect=true" value="Cambiar Clave"></p:commandLink>
+                                                <p:commandLink action="#{administradorBean.editarClave()}" value="Cambiar Clave"></p:commandLink>
                                             </li>
                                             <li>
-                                                <p:commandLink action="#{loginBean.cerrarSesion()}" value="Cerrrar Sesión"></p:commandLink>
+                                                <p:commandLink action="#{loginBean.cerrarSesion()}" value="Cerrar Sesión"></p:commandLink>
                                             </li>
                                         </ul>
                                     </li>
@@ -77,6 +81,7 @@
                             </div>
                         </div>
                         <div id="panelIzquierdo">
+                            <h:outputLabel value = "Error: No ha iniciado sesion" rendered="#{!loginBean.usuarioLogueado}"/>
                             <ui:insert name="content"></ui:insert>
                         </div>                        
                     </div>
@@ -94,5 +99,4 @@
             </div>
         </div>
     </h:body>
-
 </html>

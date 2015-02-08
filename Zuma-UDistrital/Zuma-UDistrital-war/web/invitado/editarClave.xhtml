@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:p="http://primefaces.org/ui"
-      xmlns:ui="http://java.sun.com/jsf/facelets">
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core">
     <h:head>
         <title>Facelet Title</title>
     </h:head>
@@ -13,6 +14,9 @@
                 <center>
                     <h:form id="formularioCambioClave">
                         <p:panelGrid columns="2" style="width:520px;margin: 20px 0px;">
+                            <f:facet name="header">
+                                    <h:outputText value="Cambiar su Clave" />
+                            </f:facet>
                             <h:outputText value="Nueva Clave "/>
                             <p:password id="clave" value="#{recordatorioClaveBean.nuevaClave}"/>
 

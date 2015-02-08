@@ -11,7 +11,7 @@
         <ui:composition template="./../plantillas/plantillaInvitado.xhtml">
             <ui:define name="content">
                 <center style="margin-bottom: 35px;">
-                    <h1  style="font-style: italic;">Bienvenido</h1>
+                    <h1>Bienvenido:</h1>
                     <h2>Invitado</h2>
                     <h:outputLabel value = "Error: No ha iniciado sesion" rendered="#{!loginBean.usuarioLogueado}"/>
                     <h:form id="formularioBienvenida" rendered="#{loginBean.usuarioLogueado}">      

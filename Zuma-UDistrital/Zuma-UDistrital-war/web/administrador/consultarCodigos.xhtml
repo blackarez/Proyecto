@@ -3,79 +3,84 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:p="http://primefaces.org/ui"
-      xmlns:f="http://java.sun.com/jsf/core">
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
     <h:head>
         <title>Facelet Title</title>
     </h:head>
     <h:body>
-        <center>
-            <h1>Universidad Distrital Francisco José de Caldas</h1>
-            <h3>Lista Códigos QR</h3>
-        </center>
-        <h:form>
-            <p:dataTable var="codigo" value="#{adminCodigosBean.listaCodigosQR}" widgetVar="tablaCodigos" style="width:100%"
-                         emptyMessage="No hay códigos con ese criterio" filteredValue="#{adminCodigosBean.listaCodigosQRFiltrados}"
-                         rows="10"
-                         paginator="true"
-                         paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-                         rowsPerPageTemplate="5,10,15">
-                <f:facet name="header">
-                    <p:outputPanel>
-                        <h:outputText value="Buscar en todos los campos:"/>
-                        <p:inputText id="globalFilter" onkeyup="PF('tablaCodigos').filter()" placeholder="Palabra clave"/>
-                    </p:outputPanel>
-                </f:facet>
+        <ui:composition template="./../plantillas/pantillaAdministrador.xhtml">
+            <ui:define name="content">
+                <center>
+                    <h1>Universidad Distrital Francisco José de Caldas</h1>
+                    <h3>Lista Códigos QR</h3>
+                </center>
+                <h:form>
+                    <p:dataTable var="codigo" value="#{adminCodigosBean.listaCodigosQR}" widgetVar="tablaCodigos" style="width:100%"
+                                 emptyMessage="No hay códigos con ese criterio" filteredValue="#{adminCodigosBean.listaCodigosQRFiltrados}"
+                                 rows="10"
+                                 paginator="true"
+                                 paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                                 rowsPerPageTemplate="5,10,15">
+                        <f:facet name="header">
+                            <p:outputPanel>
+                                <h:outputText value="Buscar en todos los campos:"/>
+                                <p:inputText id="globalFilter" onkeyup="PF('tablaCodigos').filter()" placeholder="Palabra clave"/>
+                            </p:outputPanel>
+                        </f:facet>
 
-                <p:column filterBy="#{codigo.codigoId}" headerText="Id">
-                    <h:outputText value="#{codigo.codigoId}" />
-                </p:column>
+                        <p:column filterBy="#{codigo.codigoId}" headerText="Id">
+                            <h:outputText value="#{codigo.codigoId}" />
+                        </p:column>
 
-                <p:column filterBy="#{codigo.codigoNombre}" headerText="Nombre">
-                    <h:outputText value="#{codigo.codigoNombre}" />
-                </p:column>
+                        <p:column filterBy="#{codigo.codigoNombre}" headerText="Nombre">
+                            <h:outputText value="#{codigo.codigoNombre}" />
+                        </p:column>
 
-                <p:column filterBy="#{codigo.codigoDescripcion}" headerText="Descripción">
-                    <h:outputText value="#{codigo.codigoDescripcion}" />
-                </p:column>
+                        <p:column filterBy="#{codigo.codigoDescripcion}" headerText="Descripción">
+                            <h:outputText value="#{codigo.codigoDescripcion}" />
+                        </p:column>
 
-                <p:column filterBy="#{codigo.estadoCodigoId.estadoCodigoEstado}" headerText="Estado">
-                    <h:outputText value="#{codigo.estadoCodigoId.estadoCodigoEstado}" />
-                </p:column>
+                        <p:column filterBy="#{codigo.estadoCodigoId.estadoCodigoEstado}" headerText="Estado">
+                            <h:outputText value="#{codigo.estadoCodigoId.estadoCodigoEstado}" />
+                        </p:column>
 
-                <p:column filterBy="#{codigo.tipoCodigoId.tipoCodigoTipo}" headerText="Estado">
-                    <f:facet name="filter">
-                        <p:selectOneMenu onchange="PF('tablaCodigos').filter()" >
-                            <f:selectItem itemLabel="Seleccione" itemValue="#{null}" noSelectionOption="true" />
-                            <f:selectItems value="#{adminCodigosBean.listaTiposCodigos}" />
-                        </p:selectOneMenu>
-                    </f:facet>
-                    <h:outputText value="#{codigo.tipoCodigoId.tipoCodigoTipo}" />
-                </p:column>
+                        <p:column filterBy="#{codigo.tipoCodigoId.tipoCodigoTipo}" headerText="Estado">
+                            <f:facet name="filter">
+                                <p:selectOneMenu onchange="PF('tablaCodigos').filter()" >
+                                    <f:selectItem itemLabel="Seleccione" itemValue="#{null}" noSelectionOption="true" />
+                                    <f:selectItems value="#{adminCodigosBean.listaTiposCodigos}" />
+                                </p:selectOneMenu>
+                            </f:facet>
+                            <h:outputText value="#{codigo.tipoCodigoId.tipoCodigoTipo}" />
+                        </p:column>
 
-                <p:column headerText="Opciones">
-                    <p:commandLink value="Editar" action="editarCodigoQR?faces-redirect=true">
-                        <f:setPropertyActionListener target="#{adminEditarCodigoBean.idCodigo}" value="#{codigo.codigoId}"/>
-                        <f:setPropertyActionListener target="#{adminEditarCodigoBean.nombreCodigo}" value="#{codigo.codigoNombre}"/>
-                        <f:setPropertyActionListener target="#{adminEditarCodigoBean.descripcion}" value="#{codigo.codigoDescripcion}"/>
-                        <f:setPropertyActionListener target="#{adminEditarCodigoBean.estadoCodigo}" value="#{codigo.estadoCodigoId.estadoCodigoEstado}"/>
-                        <f:setPropertyActionListener target="#{adminEditarCodigoBean.tipoCodigo}" value="#{codigo.tipoCodigoId.tipoCodigoTipo}"/>
-                    </p:commandLink>
-                    &nbsp;
-                    <p:commandLink value="Eliminar" action="eliminarCodigoQR">
-                        <f:setPropertyActionListener target="#{adminEliminarCodigoBean.id}" value="#{codigo.codigoId}"/>
-                        <f:setPropertyActionListener target="#{adminEliminarCodigoBean.nombre}" value="#{codigo.codigoNombre}"/>
-                        <f:setPropertyActionListener target="#{adminEliminarCodigoBean.descripcion}" value="#{codigo.codigoDescripcion}"/>
-                        <f:setPropertyActionListener target="#{adminEliminarCodigoBean.estado}" value="#{codigo.estadoCodigoId.estadoCodigoEstado}"/>
-                        <f:setPropertyActionListener target="#{adminEliminarCodigoBean.tipo}" value="#{codigo.tipoCodigoId.tipoCodigoTipo}"/>
-                    </p:commandLink>
-                </p:column>
+                        <p:column headerText="Opciones">
+                            <p:commandLink value="Editar" action="editarCodigoQR?faces-redirect=true">
+                                <f:setPropertyActionListener target="#{adminEditarCodigoBean.idCodigo}" value="#{codigo.codigoId}"/>
+                                <f:setPropertyActionListener target="#{adminEditarCodigoBean.nombreCodigo}" value="#{codigo.codigoNombre}"/>
+                                <f:setPropertyActionListener target="#{adminEditarCodigoBean.descripcion}" value="#{codigo.codigoDescripcion}"/>
+                                <f:setPropertyActionListener target="#{adminEditarCodigoBean.estadoCodigo}" value="#{codigo.estadoCodigoId.estadoCodigoEstado}"/>
+                                <f:setPropertyActionListener target="#{adminEditarCodigoBean.tipoCodigo}" value="#{codigo.tipoCodigoId.tipoCodigoTipo}"/>
+                            </p:commandLink>
+                            &nbsp;
+                            <p:commandLink value="Eliminar" action="eliminarCodigoQR">
+                                <f:setPropertyActionListener target="#{adminEliminarCodigoBean.id}" value="#{codigo.codigoId}"/>
+                                <f:setPropertyActionListener target="#{adminEliminarCodigoBean.nombre}" value="#{codigo.codigoNombre}"/>
+                                <f:setPropertyActionListener target="#{adminEliminarCodigoBean.descripcion}" value="#{codigo.codigoDescripcion}"/>
+                                <f:setPropertyActionListener target="#{adminEliminarCodigoBean.estado}" value="#{codigo.estadoCodigoId.estadoCodigoEstado}"/>
+                                <f:setPropertyActionListener target="#{adminEliminarCodigoBean.tipo}" value="#{codigo.tipoCodigoId.tipoCodigoTipo}"/>
+                            </p:commandLink>
+                        </p:column>
 
-            </p:dataTable>
-            <center>
-                <p:commandButton action="inicio" value="Volver"/>
-                <p:commandButton action="crearCodigoQR" value="Crear Código"/>
-            </center>
-        </h:form>
+                    </p:dataTable>
+                    <center>
+                        <p:commandButton action="inicio" value="Volver"/>
+                        <p:commandButton action="crearCodigoQR" value="Crear Código"/>
+                    </center>
+                </h:form>   
+            </ui:define>
+        </ui:composition>
     </h:body>
 </html>
 

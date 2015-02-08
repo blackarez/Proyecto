@@ -3,49 +3,53 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:p="http://primefaces.org/ui"
-      xmlns:f="http://java.sun.com/jsf/core">
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
     <h:head>
         <title>Facelet Title</title>
     </h:head>
     <h:body>
-        <center>
-            <h1>Edicion de Perfil</h1>
-            <h2>Administrador</h2>
-            <h:form>
-                <p:panelGrid columns="3">
-                    <f:facet name="header">
-                        <h:outputText value="Editar Perfil Administrador"/>
-                    </f:facet>
-                    <h:outputText value="Nombre :"/>
-                    <h:inputText id="nombre" value="#{loginBean.usuarioActual.usuarioNombre}" required="true"/>
-                    <p:message for="nombre" display="icon"/>
+        <ui:composition template="./../plantillas/pantillaAdministrador.xhtml">
+            <ui:define name="content">
+                <center>
+                    <div class="divTabla" style="margin: 10px;">
+                        <h:form>
+                            <p:panelGrid columns="3" style="width: 520px;">
+                                <f:facet name="header">
+                                    <h:outputText value="Editar su Perfil"/>
+                                </f:facet>
+                                <h:outputText value="Nombre :"/>
+                                <h:inputText id="nombre" value="#{loginBean.usuarioActual.usuarioNombre}" required="true"/>
+                                <p:message for="nombre" display="icon"/>
 
-                    <h:outputText value="Apellido :"/>
-                    <h:inputText id="apellido" value="#{loginBean.usuarioActual.usuarioApellido}" required="true"/>
-                    <p:message for="apellido" display="icon"/>
+                                <h:outputText value="Apellido :"/>
+                                <h:inputText id="apellido" value="#{loginBean.usuarioActual.usuarioApellido}" required="true"/>
+                                <p:message for="apellido" display="icon"/>
 
-                    <h:outputText value="Correo :"/>
-                    <h:outputText id="correo" value="#{loginBean.usuarioActual.usuarioCorreo}"/>
-                    <p:message for="correo" display="icon"/>
+                                <h:outputText value="Correo :"/>
+                                <h:outputText id="correo" value="#{loginBean.usuarioActual.usuarioCorreo}"/>
+                                <p:message for="correo" display="icon"/>
 
-                    <h:outputText value="Estado :"/>
-                    <h:outputText id="estado" value="#{loginBean.usuarioActual.estadoUsuario.estadoUsuarioEstado}"/>
-                    <p:message for="estado" display="icon"/>
+                                <h:outputText value="Estado :"/>
+                                <h:outputText id="estado" value="#{loginBean.usuarioActual.estadoUsuario.estadoUsuarioEstado}"/>
+                                <p:message for="estado" display="icon"/>
 
-                    <h:outputText value="Rol :"/>
-                    <h:outputText id="rol" value="#{loginBean.usuarioActual.rolId.rolNombre}"/>
-                    <p:message for="rol" display="icon"/>
+                                <h:outputText value="Rol :"/>
+                                <h:outputText id="rol" value="#{loginBean.usuarioActual.rolId.rolNombre}"/>
+                                <p:message for="rol" display="icon"/>
 
-                    <f:facet name="footer">
-                        <center>
-                            <p:commandButton action="consultarPerfil" value="Cancelar"  ajax="false"></p:commandButton>
-                            <p:commandButton action="#{loginBean.editarPerfil()}" value="Guardar"  ajax="false"></p:commandButton>
-                        </center>
-                    </f:facet> 
-
-                </p:panelGrid>
-            </h:form>
-        </center>
+                                <f:facet name="footer">
+                                    <center>
+                                        <p:commandButton action="consultarPerfil" value="Cancelar"  ajax="false"></p:commandButton>
+                                        <p:commandButton action="#{loginBean.editarPerfil()}" value="Guardar"  ajax="false"></p:commandButton>
+                                    </center>
+                                </f:facet> 
+                            </p:panelGrid>
+                        </h:form>
+                    </div>
+                </center>   
+            </ui:define>
+        </ui:composition>
     </h:body>
 </html>
 

@@ -3,56 +3,61 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:p="http://primefaces.org/ui"
-      xmlns:f="http://java.sun.com/jsf/core">
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
     <h:head>
         <title>Facelet Title</title>
     </h:head>
     <h:body>
-        <h1>Editar usuarios</h1>
+        <ui:composition template="./../plantillas/pantillaAdministrador.xhtml">
+            <ui:define name="content">
+                <h1>Editar usuarios</h1>
 
-        <center>
-            <h:form>
-                <p:panelGrid columns="3">
-                    <f:facet name="header">
-                        <h:outputText value="Editar Usuario"/>
-                    </f:facet>
-                    <h:outputText value="Nombre :"/>
-                    <h:inputText id="nombre" value="#{adminEditarUsuarioBean.nombre}" required="true"/>
-                    <p:message for="nombre" display="icon"/>
+                <center>
+                    <h:form>
+                        <p:panelGrid columns="3">
+                            <f:facet name="header">
+                                <h:outputText value="Editar Usuario"/>
+                            </f:facet>
+                            <h:outputText value="Nombre :"/>
+                            <h:inputText id="nombre" value="#{adminEditarUsuarioBean.nombre}" required="true"/>
+                            <p:message for="nombre" display="icon"/>
 
-                    <h:outputText value="Apellido :"/>
-                    <h:inputText id="apellido" value="#{adminEditarUsuarioBean.apellido}" required="true"/>
-                    <p:message for="apellido" display="icon"/>
+                            <h:outputText value="Apellido :"/>
+                            <h:inputText id="apellido" value="#{adminEditarUsuarioBean.apellido}" required="true"/>
+                            <p:message for="apellido" display="icon"/>
 
-                    <h:outputText value="Correo :"/>
-                    <h:inputText id="correo" value="#{adminEditarUsuarioBean.correo}" required="true"/>
-                    <p:message for="correo" display="icon"/>
+                            <h:outputText value="Correo :"/>
+                            <h:inputText id="correo" value="#{adminEditarUsuarioBean.correo}" required="true"/>
+                            <p:message for="correo" display="icon"/>
 
-                    <h:outputText value="Rol :"/>
-                    <p:selectOneMenu id="rol" value="#{adminEditarUsuarioBean.rol}" required="true" requiredMessage="campo requerido">
-                        <f:selectItem itemLabel="Seleccionar"/>
-                        <f:selectItems value="#{adminEditarUsuarioBean.listaRolesUsuarios}"/>
-                    </p:selectOneMenu>
-                    <p:message for="rol" display="icon"/>
+                            <h:outputText value="Rol :"/>
+                            <p:selectOneMenu id="rol" value="#{adminEditarUsuarioBean.rol}" required="true" requiredMessage="campo requerido">
+                                <f:selectItem itemLabel="Seleccionar"/>
+                                <f:selectItems value="#{adminEditarUsuarioBean.listaRolesUsuarios}"/>
+                            </p:selectOneMenu>
+                            <p:message for="rol" display="icon"/>
 
-                    <h:outputText value="Estado :"/>
-                    <p:selectOneMenu id="estado" value="#{adminEditarUsuarioBean.estado}" required="true" requiredMessage="campo requerido">
-                        <f:selectItem itemLabel="Seleccionar" />
-                        <f:selectItems value="#{adminEditarUsuarioBean.listaEstadosUsuarios}"/>
-                    </p:selectOneMenu>
-                    <p:message for="estado" display="icon"/>
+                            <h:outputText value="Estado :"/>
+                            <p:selectOneMenu id="estado" value="#{adminEditarUsuarioBean.estado}" required="true" requiredMessage="campo requerido">
+                                <f:selectItem itemLabel="Seleccionar" />
+                                <f:selectItems value="#{adminEditarUsuarioBean.listaEstadosUsuarios}"/>
+                            </p:selectOneMenu>
+                            <p:message for="estado" display="icon"/>
 
-                    <f:facet name="footer">
-                        <center>
-                            <p:commandButton action="consultarUsuarios" value="Cancelar"  ajax="false"></p:commandButton>
-                            <p:commandButton action="#{adminEditarUsuarioBean.editarUsuario()}" value="Guardar"  ajax="false"></p:commandButton>
-                        </center>
-                    </f:facet>
+                            <f:facet name="footer">
+                                <center>
+                                    <p:commandButton action="consultarUsuarios" value="Cancelar"  ajax="false"></p:commandButton>
+                                    <p:commandButton action="#{adminEditarUsuarioBean.editarUsuario()}" value="Guardar"  ajax="false"></p:commandButton>
+                                </center>
+                            </f:facet>
 
-                </p:panelGrid>
-            </h:form>
-            
-        </center>
+                        </p:panelGrid>
+                    </h:form>
+
+                </center>                
+            </ui:define>
+        </ui:composition>
     </h:body>
 </html>
 

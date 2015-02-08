@@ -2,27 +2,37 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core">
     <h:head>
         <title>Facelet Title</title>
     </h:head>
     <h:body>
-        <center>
-            <h1>Cambio de Clave</h1>
-            <h3>Administrador</h3>
-            <br/>
-            <h:form id="formularioCambioClave">
-                <p:panelGrid columns="2">
-                    <h:outputText value="Nueva Clave "/>
-                    <p:password id="clave" value="#{recordatorioClaveBean.nuevaClave}"/>
-                    
-                    <h:outputText value="Confirme Clave"/>
-                    <p:password id="confirmaClave" value="#{recordatorioClaveBean.confirmacionClave}"/>                    
-                </p:panelGrid>
-                <p:commandButton value="Cambiar Clave" action="#{recordatorioClaveBean.cambiarClave()}"/>
-                <p:commandButton value="Cancelar" action="inicio?faces-redirect=true"/>
-            </h:form>
-        </center>
+        <ui:composition template="./../plantillas/pantillaAdministrador.xhtml">
+            <ui:define name="content">
+                <center>
+                    <div class="divTabla" style="margin: 10px;">
+                        <h:form id="formularioCambioClave">
+                            <p:panelGrid columns="2" style="width: 520px;">
+                                <f:facet name="header">
+                                    <h:outputText value="Cambiar su Clave" />
+                                </f:facet>
+                                <h:outputText value="Nueva Clave "/>
+                                <p:password id="clave" value="#{recordatorioClaveBean.nuevaClave}"/>
+
+                                <h:outputText value="Confirme Clave"/>
+                                <p:password id="confirmaClave" value="#{recordatorioClaveBean.confirmacionClave}"/>                    
+                            </p:panelGrid>
+                            <center style="margin: 20px;">
+                                <p:commandButton value="Cambiar Clave" action="#{recordatorioClaveBean.cambiarClave()}" style="margin-right: 20px;"/>
+                                <p:commandButton value="Cancelar" action="inicio?faces-redirect=true"/>
+                            </center>
+                        </h:form>
+                    </div>
+                </center>    
+            </ui:define>
+        </ui:composition>
     </h:body>
 </html>
 
