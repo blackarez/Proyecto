@@ -3,10 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Jhon/Documents/NetBeansProjects/Zuma-UDistrital/Zuma-UDistrital-war/web/docente/crearContenido.xhtml</file>
-            <file>file:/C:/Users/Jhon/Documents/NetBeansProjects/Zuma-UDistrital/Zuma-UDistrital-war/src/java/edu/udistrital/zuma/managedBean/DocenteCrearContenidoBean.java</file>
-            <file>file:/C:/Users/Jhon/Documents/NetBeansProjects/Zuma-UDistrital/Zuma-UDistrital-war/web/docente/consultarContenidos.xhtml</file>
-            <file>file:/C:/Users/Jhon/Documents/NetBeansProjects/Zuma-UDistrital/Zuma-UDistrital-war/web/administrador/consultarCodigos.xhtml</file>
+            <file>file:/C:/Users/Angel/Desktop/Jee-zuma/proyecto/Zuma-UDistrital/Zuma-UDistrital-war/web/administrador/editarClave.xhtml</file>
+            <file>file:/C:/Users/Angel/Desktop/Jee-zuma/proyecto/Zuma-UDistrital/Zuma-UDistrital-war/web/administrador/consultarPerfil.xhtml</file>
+            <file>file:/C:/Users/Angel/Desktop/Jee-zuma/proyecto/Zuma-UDistrital/Zuma-UDistrital-war/web/administrador/editarPerfil.xhtml</file>
+            <file>file:/C:/Users/Angel/Desktop/Jee-zuma/proyecto/Zuma-UDistrital/Zuma-UDistrital-war/web/plantillas/pantillaAdministrador.xhtml</file>
+            <file>file:/C:/Users/Angel/Desktop/Jee-zuma/proyecto/Zuma-UDistrital/Zuma-UDistrital-war/web/administrador/eliminarUsuario.xhtml</file>
+            <file>file:/C:/Users/Angel/Desktop/Jee-zuma/proyecto/Zuma-UDistrital/Zuma-UDistrital-war/src/java/edu/udistrital/zuma/managedBean/AdministradorBean.java</file>
         </group>
     </open-files>
 </project-private>
