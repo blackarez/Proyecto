@@ -37,14 +37,12 @@
                                 <h:outputText value="Rol :"/>
                                 <h:outputText id="rol" value="#{loginBean.usuarioActual.rolId.rolNombre}"/>
                                 <p:message for="rol" display="icon"/>
-
-                                <f:facet name="footer">
-                                    <center>
-                                        <p:commandButton action="consultarPerfil" value="Cancelar"  ajax="false"></p:commandButton>
-                                        <p:commandButton action="#{loginBean.editarPerfil()}" value="Guardar"  ajax="false"></p:commandButton>
-                                    </center>
-                                </f:facet> 
+                                
                             </p:panelGrid>
+                            <center>
+                                <p:commandButton action="consultarPerfil" value="Cancelar"  ajax="false" style="margin-left:20px; "></p:commandButton>
+                                        <p:commandButton action="#{loginBean.editarPerfil()}" value="Guardar"  ajax="false"></p:commandButton>
+                            </center>
                         </h:form>
                     </div>
                 </center>   
