@@ -195,6 +195,7 @@ body{
 .menuLateral{
     margin: -15px 0px 0px 7px;
     width: 200px;
+    cursor: pointer;
 }
 
 .menuLateral ul{

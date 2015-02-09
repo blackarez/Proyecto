@@ -40,4 +40,40 @@ padding: 7px 4px !important;
     background: #deedf7;
     padding: 8px;
     font-size: 13px;
+    border-radius: 0px;
+}
+
+ .divTabla .ui-datatable .ui-paginator{
+    background: #deedf7;
+    padding: 10px 0px !important;
+    border-radius: 0px;
+}
+
+.ui-paginator .ui-paginator-page {
+    background: #2090e7;
+    padding: 4px 10px !important;
+    border-radius: 0px;
+}
+
+.ui-paginator .ui-paginator-current, .ui-paginator .ui-paginator-rpp-options {
+    border-radius: 7px;
+    padding: 4px 2px !important;
+    border-radius: 0px;
+}
+
+.ui-paginator .ui-paginator-page, .ui-paginator .ui-paginator-next, .ui-paginator .ui-paginator-last, .ui-paginator .ui-paginator-first, .ui-paginator .ui-paginator-prev {
+    padding: 4px 6px !important;
+    border-radius: 0px;
+}
+
+.ui-datatable .ui-datatable-header {
+    padding: 15px 0px !important;
+}
+
+.ui-widget-header .ui-inputfield, .ui-widget-content .ui-inputfield {
+    margin-left: 10px;
+}
+
+.ui-datatable .ui-column-filter {
+    width: 92% !important;
 }
